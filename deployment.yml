@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+ name: nginx-deployment 
+ labels:
+  env: test
+  maintainer: ashok
+
+spec:
+ replicas: 2
+ selector:
+  matchlabels:
+   env: test
+   maintainer: ashok
+ template:
+  metadata: 
+   name: nginx-pod
+   labels:
+    env: test
+    maintainer: ashok
+  spec:
+   containers: 
+   - name: nginx
+     image: nginx:1.16
+     ports:
+     - containerPort: 8080      
